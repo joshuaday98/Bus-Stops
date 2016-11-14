@@ -56,11 +56,10 @@ function find_stops(lat, long){
 
 
 function geocode_address(user_address){
-  $.ajax({url:'https://maps.googleapis.com/maps/api/geocode/json',
-          type:'GET',
-          data:{address:user_address, key: GEOCODE},
+  $.ajax({url:'https://localhost:5000/user_address/',
+          type:'POST',
           success: function(response){
-            find_stops(response[0].geometry.location.lat, response[0].geometry.location.lng);
+            console.log(response)
           },
           error: function(error){
             console.log(error);
@@ -81,6 +80,7 @@ function get_address(){
     get_address();
   });
   $('#given').on('click', function(){
-    geocode_address($('#address').val())
+    var address_string = $('#address').val()
+    geocode_address(address_string)
   });
 })();
