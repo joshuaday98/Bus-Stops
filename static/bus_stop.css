@@ -1,0 +1,46 @@
+body{
+  margin-left: 1%;
+  margin-right:1%;
+  overflow-x: hidden;
+  background-color: #e9d3be;
+}
+
+main{
+  margin-top: 1%;
+  background-color: #ddcc76;
+  padding: 3%;
+}
+
+form{
+  margin-left: 1%;
+  margin-right:30%;
+}
+
+#address{
+  width: 40%;
+}
+
+#map{
+  height:700px;
+  width:100%;
+}
+
+#map, #find, #user{
+  box-shadow: 10px 10px 5px grey
+}
+
+#cont{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+#find, #user{
+  padding-left: 17%;
+  border: solid black 2px;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+}
+
+.interactive{
+  max-height: 3%
+}
