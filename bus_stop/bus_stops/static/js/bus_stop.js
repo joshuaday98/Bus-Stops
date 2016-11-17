@@ -42,13 +42,13 @@ function add_markers(mylat, mylng, ob){
 };
 
 
-function find_stops(lat, long){
-  $.ajax({url: 'http://localhost:8000/find_stops/',
+function find_stops(lat, lng){
+  $.ajax({url: '/find_stops/',
           type:'POST',
-          data:{'lat': lat, 'lng': long},
+          data:{'lat': lat, 'lng': lng},
           success: function(response){
             console.log(response)
-            add_markers(lat, long, response);
+            add_markers(lat, lng, response);
           },
           error: function(error){
             $('#results').append('<p>An Error Occured</p>');
@@ -57,10 +57,13 @@ function find_stops(lat, long){
 
 
 function geocode_address(user_address){
-  $.ajax({url:'https://localhost:5000/stops/',
+  $.ajax({url:'/geocode/',
           type:'POST',
+          data:{'address':user_address},
           success: function(response){
-            console.log(response)
+            var lat = response.lat
+            var lng =  response.lng
+            find_stops(lat, lng)
           },
           error: function(error){
             console.log(error);
@@ -77,10 +80,12 @@ function get_address(){
 
 
 (function user_actions(){
-  $('#get').on('click', function(){
+  $('#get').on('click', function(evt){
     get_address();
   });
-  $('#given').on('click', function(){
+  $('#given').on('click', function(evt){
+    evt.stopImmediatePropagation();
+    evt.preventDefault();
     var address_string = $('#address').val()
     geocode_address(address_string)
   });

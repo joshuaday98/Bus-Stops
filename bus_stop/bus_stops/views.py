@@ -3,6 +3,7 @@ from private.secrets import TRIMET
 import requests as req
 from django.http import JsonResponse
 import json
+from geopy.geocoders import GoogleV3
 
 
 def post_page(request):
@@ -22,4 +23,15 @@ def find_stops(request):
         response = json.loads(response.text)
 
         return JsonResponse(response, safe=False)
+
+
+def geocode_address(request):
+    if request.method == 'POST':
+        geolocator = GoogleV3()
+        location = geolocator.geocode(request.POST.get("address"))
+        lat = location.latitude
+        lng = location.longitude
+        coords = {"lat": lat, "lng": lng}
+
+        return JsonResponse(coords)
 # Create your views here.

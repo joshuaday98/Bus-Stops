@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^stops/', views.post_page, name='post_page'),
     url(r'^find_stops/', views.find_stops, name='find_stops'),
+    url(r'^geocode/', views.geocode_address, name='geocode_address')
 ]
