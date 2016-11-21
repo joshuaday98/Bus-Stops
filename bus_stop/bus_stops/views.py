@@ -34,4 +34,3 @@ def geocode_address(request):
         coords = {"lat": lat, "lng": lng}
 
         return JsonResponse(coords)
-# Create your views here.

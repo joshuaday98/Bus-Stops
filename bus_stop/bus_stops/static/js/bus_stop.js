@@ -11,10 +11,9 @@ function add_markers(mylat, mylng, ob){
 
   $.each(stops, function(index, value){
       var info_string = '';
-      var coords = {lat:stops[index].lat, lng:stops[index].lng};
 
       var marker = new google.maps.Marker({
-        position: coords,
+        position: {lat:stops[index].lat, lng:stops[index].lng},
         map:map,
         animation:google.maps.Animation.DROP,
         title: stops[index].desc + ' || ' + stops[index].dir
@@ -22,12 +21,13 @@ function add_markers(mylat, mylng, ob){
 
       $.each(stops[index].route, function(inde, value){
         var route_num = stops[index].route[inde].route;
+
         if (route_num.toString().length == 1){
-          info_string +=  '<br><p>Route: <a href="http://trimet.org/schedules/r00'+route_num+'.htm">'+route_num+'</a></p>';
+          info_string += '<br><p>Route: <a href="http://trimet.org/schedules/r00'+route_num+'.htm">'+route_num+'</a></p>';
         } else if(route_num.toString().length == 2){
-          info_string +=  '<br><p>Route: <a href="http://trimet.org/schedules/r0'+route_num+'.htm">'+route_num+'</a></p>';
+          info_string += '<br><p>Route: <a href="http://trimet.org/schedules/r0'+route_num+'.htm">'+route_num+'</a></p>';
         }else {
-          info_string +=  '<br><p>Route: <a href="http://trimet.org/schedules/r'+route_num+'.htm">'+route_num+'</a></p>';
+          info_string += '<br><p>Route: <a href="http://trimet.org/schedules/r'+route_num+'.htm">'+route_num+'</a></p>';
         };
       });
 
@@ -47,7 +47,6 @@ function find_stops(lat, lng){
           type:'POST',
           data:{'lat': lat, 'lng': lng},
           success: function(response){
-            console.log(response)
             add_markers(lat, lng, response);
           },
           error: function(error){
@@ -61,9 +60,7 @@ function geocode_address(user_address){
           type:'POST',
           data:{'address':user_address},
           success: function(response){
-            var lat = response.lat
-            var lng =  response.lng
-            find_stops(lat, lng)
+            find_stops(response.lat, response.lng)
           },
           error: function(error){
             console.log(error);
