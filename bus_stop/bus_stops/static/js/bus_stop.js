@@ -27,7 +27,6 @@ function show_route(route_num){
             }
           });};
 
-
 function add_stop_markers(mylat, mylng, ob){
   var mycoords = {lat:mylat, lng:mylng};
   var stops = ob.resultSet.location;
