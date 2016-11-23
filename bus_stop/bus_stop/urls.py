@@ -16,10 +16,21 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from bus_stops import views
+from django.conf import settings
 
 urlpatterns = [
+    #urls user can actually use
     url(r'^admin/', admin.site.urls),
-    url(r'^stops/', views.post_page, name='post_page'),
+    url(r'^$', views.post_page, name='post_page'),
+
+    #Views functions
     url(r'^find_stops/', views.find_stops, name='find_stops'),
+    url(r'^find_route/', views.find_route, name='find_route'),
     url(r'^geocode/', views.geocode_address, name='geocode_address')
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ]

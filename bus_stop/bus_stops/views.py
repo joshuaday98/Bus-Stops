@@ -11,6 +11,17 @@ def post_page(request):
     return render(request, 'bus_stop.html')
 
 
+def find_route(request):
+    if request.method == 'POST':
+        route_num = request.POST['route']
+
+        url = 'https://developer.trimet.org/ws/v2/vehicles'
+        data = {'appID': TRIMET, 'routes': route_num}
+
+        response = req.get(url, data)
+        return JsonResponse(response.json())
+
+
 def find_stops(request):
     if request.method == 'POST':
         lat = request.POST['lat']
@@ -18,7 +29,12 @@ def find_stops(request):
         laln = lat + ',' + lng
 
         url = 'https://developer.trimet.org/ws/V1/stops/'
-        data = {'json': 'true', 'appID': TRIMET, 'll': laln, 'meters': '275', 'showRoutes':'true'}
+        data = {'json': 'true',
+                'appID': TRIMET,
+                'll': laln,
+                'meters': '275',
+                'showRoutes': 'true'}
+
         response = req.get(url, data)
         response = json.loads(response.text)
 

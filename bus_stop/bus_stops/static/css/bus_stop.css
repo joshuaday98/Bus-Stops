@@ -14,10 +14,11 @@ main{
 form{
   margin-left: 1%;
   margin-right:30%;
+  border: 2px solid #000000
 }
 
 #address{
-  width: 40%;
+  width: 100%;
 }
 
 #map{
@@ -25,7 +26,7 @@ form{
   width:100%;
 }
 
-#map, #find, #user{
+#map, form{
   box-shadow: 10px 10px 5px grey
 }
 
@@ -36,8 +37,7 @@ form{
 
 #find, #user{
   padding-left: 17%;
-  border: solid black 2px;
-  padding-top: 1.5%;
+  padding-top: 3%;
   padding-bottom: 1.5%;
 }
 

@@ -1,4 +1,4 @@
-![logo](bus.png "Logo")
+![logo](bus_stop/bus_stops/static/img/bus.png "Logo")
 
 # Bus Stop Locator
 <br />
