@@ -12,15 +12,24 @@
 
       <div>
         <form class='row' class='interactive'>
-          <div class='col-sm-6 form-group' id='find'>
+          <div class='col-sm-4 form-group' id='find'>
             <button id='get' class= 'btn btn-primary' type='button'>Use your current location.</button>
           </div>
-          <div class='col-sm-6 form-group' id='user'>
+          <div class='col-sm-4 form-group' id='distance'>
+            <input id='int-distance' min='0'type='number' placeholder='how far would you like us to search?' /><br />
+            <select id='dist_unit'>
+              <option value='nill' selected>Select a unit</option>
+              <option value='ft'>Feet</option>
+              <option value='m'>Meters</option>
+            </select>
+          </div>
+          <div class='col-sm-4 form-group' id='user'>
             <div id='cont'>
               <div class='col-sm-6'>
                 <input id='address' type='text' placeholder='Enter your own address here!' />
                 <br /><small class='form-text text-muted'>Street address, City</small>
               </div>
+
               <div class='col-sm-6' id='add_sub'>
                 <br /><button id='given' class='btn btn-primary' type='submit'>Submit</button>
               </div>
