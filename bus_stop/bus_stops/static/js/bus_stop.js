@@ -3,6 +3,7 @@
 
 function bus_markers(response){
   var bus = response.resultSet.vehicle;
+
   if (bus){$.each(bus, function(index, value){
       var marker = new google.maps.Marker({
         position: {lat:bus[index].latitude, lng:bus[index].longitude},
@@ -141,7 +142,7 @@ function get_address(dist, dist_unit){
     if((eval_dist.test(dist)) && (dist_unit !== 'nill')){
       geocode_address($('#address').val(), dist, dist_unit);
     }else{
-      alert("Please select a unit/ enter the distance you'd like.")
+      alert("Please select a unit / enter the distance you'd like.")
     }
   });
 })();
