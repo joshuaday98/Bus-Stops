@@ -1,0 +1,72 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Bus Stops</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <link rel='stylesheet' href='{% static "css/bus_stop.css" %}' />
+  </head>
+  <body>
+    <main class='row'>
+      <section id='sidenav'class='col-sm-3'>
+        <li>
+          <h1>NERD</h1>
+        </li>
+      </section>
+      <section class='col-sm-9'>
+        <nav class='navbar navbar-default navbar-fixed-top'>
+            <div class='container'>
+              <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              </button>
+              {% block brand %}
+              {% endblock %}
+            </div>
+            <div id='navbar' class='navbar-collapse collapse' aria-expanded='false' style='height: 1px;'>
+              <ul class='nav navbar-nav'>
+                <li>
+                  <button id='get' class='btn btn-primary form-control' type='button'>Use your current location.</button>
+                </li>
+                <li>
+                  <input class='form-control' id='int-distance' min='0' type='number' placeholder='how far would you like us to search?' /><br />
+                  <select class='form-control' id='dist_unit sel1'>
+                    <option value='nill' selected>Select a unit</option>
+                    <option value='ft'>Feet</option>
+                    <option value='m'>Meters</option>
+                  </select>
+                </li>
+                <li>
+                  <input class='form-control' id='address' type='text' placeholder='Enter your own address here!' />
+                  <br /><small class='form-text text-muted'>Street address, City</small>
+                  <br /><button id='given' class='btn btn-primary form-control' type='submit'>Submit</button>
+                </li>
+                <li class='dropdown'>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cities<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/pdx/">Portland, OR</a></li>
+                    <li><a href="/nyc/">NYC, NY</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div id=map>
+        </div>
+      </section>
+    </main>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <script src='{% static "js/csrf.js" %}'></script>
+    {% block map_create %}
+    {% endblock %}
+    <script src='{% static "js/map_gen.js" %}'></script>
+  </body>
+</html>

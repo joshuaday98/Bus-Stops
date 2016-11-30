@@ -17,7 +17,7 @@ form{
   border: 2px solid #000000
 }
 
-#address{
+.form-control{
   width: 100%;
 }
 
@@ -43,4 +43,8 @@ form{
 
 .interactive{
   max-height: 3%
+}
+
+li{
+  list-style: none;
 }

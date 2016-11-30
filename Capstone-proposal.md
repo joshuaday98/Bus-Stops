@@ -11,6 +11,8 @@
 * Create an attractive front-end.
 * Add functionality for the New York transit system.
 
+![logo](https://puu.sh/syL7H/7dd18adebd.png, Logo)
+
 ## Data Model:
 
 ##### We will need to save the data for the New York transit in our database to prevent having to read the CSV containing every stop each time we have to search.

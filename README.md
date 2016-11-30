@@ -11,7 +11,4 @@
 
 <br />
 ## Requirements
-* Python 3+
-* Django - pip install django
-* geopy - pip install geopy
-* requests - pip install requests
+#### In requirements.txt

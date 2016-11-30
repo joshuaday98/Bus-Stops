@@ -15,18 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from bus_stops import views
+from bus_stops import pdx_views, nyc_views
 from django.conf import settings
 
 urlpatterns = [
-    #urls user can actually use
+    # urls user can actually use
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.post_page, name='post_page'),
+    url(r'^pdx/', pdx_views.post_pdx, name='post_pdx'),
+    url(r'^nyc/', nyc_views.post_nyc, name='post_nyc'),
 
-    #Views functions
-    url(r'^find_stops/', views.find_stops, name='find_stops'),
-    url(r'^find_route/', views.find_route, name='find_route'),
-    url(r'^geocode/', views.geocode_address, name='geocode_address')
+    # Views functions
+    url(r'^find_stops/', pdx_views.find_stops, name='find_stops'),
+    url(r'^find_route/', pdx_views.find_route, name='find_route'),
+    url(r'^geocode/', pdx_views.geocode_address, name='geocode_address'),
 ]
 
 if settings.DEBUG:

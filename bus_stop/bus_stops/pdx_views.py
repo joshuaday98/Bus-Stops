@@ -6,9 +6,9 @@ import json
 from geopy.geocoders import GoogleV3
 
 
-def post_page(request):
+def post_pdx(request):
     context = {}
-    return render(request, 'bus_stop.html')
+    return render(request, 'pdx.html')
 
 
 def find_route(request):

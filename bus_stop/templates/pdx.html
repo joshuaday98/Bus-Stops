@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block brand %}
+<a class='navbar brand'>
+  PDX, OR
+</a>
+{% endblock %}
+
+{% block map_create %}
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3jXN3ocJ27BgnQD1ZhVZ3bBSXyVt5-Nc&callback=PDXMap">
+</script>
+{% load static %}
+<script src='{% static "js/pdx.js" %}'></script>
+{% endblock %}
