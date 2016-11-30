@@ -14,51 +14,93 @@
         <nav class='navbar navbar-default navbar-fixed-top'>
             <div class='container'>
               <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              {% block brand %}
-              {% endblock %}
-            </div>
-            <div id='navbar' class='navbar-collapse collapse' aria-expanded='false' style='height: 1px;'>
-              <ul class='nav navbar-nav'>
-                <li>
-                  <button id='get' class='btn btn-primary form-control' type='button'>Use your current location.</button>
-                </li>
-                <li>
-                  <input class='form-control' id='int-distance' min='0' type='number' placeholder='how far would you like us to search?' /><br />
-                  <select class='form-control' id='dist_unit sel1'>
-                    <option value='nill' selected>Select a unit</option>
-                    <option value='ft'>Feet</option>
-                    <option value='m'>Meters</option>
-                  </select>
-                </li>
-                <li>
-                  <input class='form-control' id='address' type='text' placeholder='Enter your own address here!' />
-                  <br /><small class='form-text text-muted'>Street address, City</small>
-                  <br /><button id='given' class='btn btn-primary form-control' type='submit'>Submit</button>
-                </li>
-                <li class='dropdown'>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cities<span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/pdx/">Portland, OR</a></li>
-                    <li><a href="/nyc/">NYC, NY</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
+                <button type="button" id='open-nav' class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only open-nav">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                {% block brand %}
+                {% endblock %}
+              </div>
+              <div id='navbar' class='navbar-collapse collapse' aria-expanded='false' style='height: 1px;'>
+                <ul class='nav navbar-nav'>
+                  <li>
+                    <button id='get' class='btn btn-primary form-control' type='button'>Use your current location.</button>
+                  </li>
+                  <li>
+                    <input class='form-control' id='int-distance' min='0' type='number' placeholder='how far would you like us to search?' />
+                    <select class='form-control' id='dist_unit sel1'>
+                      <option value='nill' selected>Select a unit</option>
+                      <option value='ft'>Feet</option>
+                      <option value='m'>Meters</option>
+                    </select>
+                  </li>
+                  <li>
+                    <input class='form-control' id='address' type='text' placeholder='Enter your own address here!' />
+                    <small class='form-text text-muted'>Street address, City</small>
+                    <br /><button id='given' class='btn btn-primary form-control' type='submit'>Submit</button>
+                  </li>
+                </ul>
+                <ul class='nav navbar-nav navbar-right'>
+                  <li class='dropdown'>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cities<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/pdx/">Portland, OR</a></li>
+                      <li><a href="/nyc/">NYC, NY</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
           </div>
         </nav>
         <div id=map>
         </div>
       </section>
+      <div class="container text-center">
+        <hr />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="col-sm-3">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="#">Product for Mac</a></li>
+                <li><a href="#">Product for Windows</a></li>
+              </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="#">Web analytics</a></li>
+                  <li><a href="#">Presentations</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul class="nav nav-pills nav-stacked">
+                  <li><a href="#">Product Help</a></li>
+                  <li><a href="#">Developer API</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-12">
+              <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2013 Company Name.</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
     </main>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
     <script src='{% static "js/csrf.js" %}'></script>
     {% block map_create %}
     {% endblock %}

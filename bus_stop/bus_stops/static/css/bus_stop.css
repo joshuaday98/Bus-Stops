@@ -5,43 +5,57 @@ body{
   background-color: #e9d3be;
 }
 
-main{
-  margin-top: 1%;
-  background-color: #ddcc76;
-  padding: 3%;
-}
-
-form{
-  margin-left: 1%;
-  margin-right:30%;
-  border: 2px solid #000000
-}
-
-.form-control{
-  width: 100%;
-}
-
 #map{
-  height:700px;
+  margin-top: 5%;
+  height:650px;
   width:100%;
-}
-
-#map, form{
-  box-shadow: 10px 10px 5px grey
-}
-
-#cont{
-  margin-top: 1%;
-}
-
-#find, #user{
-  padding-left: 17%;
-}
-
-.interactive{
-  max-height: 3%
 }
 
 li{
   list-style: none;
+}
+
+.open-nav, .icon-bar, .sr-only{
+  width:10%;
+  height: 110%;
+}
+
+@media (max-width: 1080px) {
+  #map{
+    height:1190px;
+  }
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      float: none !important;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
 }
