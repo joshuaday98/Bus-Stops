@@ -7,8 +7,8 @@ from geopy.geocoders import GoogleV3
 
 
 def post_pdx(request):
-    context = {}
-    return render(request, 'pdx.html')
+    context = {'city':'PDX'}
+    return render(request, 'pdx.html', context)
 
 
 def find_route(request):

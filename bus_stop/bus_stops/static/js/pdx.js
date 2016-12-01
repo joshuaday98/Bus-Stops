@@ -122,7 +122,7 @@ function get_address(dist, dist_unit){
 (function user_actions(){
   var eval_dist = new RegExp('[0-9]+')
 
-  $('#get').on('click', function(evt){
+  $('#get').on('click touchstart', function(evt){
     var dist = $('#int-distance').val();
     var dist_unit = $('#dist_unit').val();
 
@@ -132,7 +132,7 @@ function get_address(dist, dist_unit){
       alert("Please select a unit / enter the distance you'd like.")
     }
   });
-  $('#given').on('click', function(evt){
+  $('#given').on('click touchstart', function(evt){
     evt.stopImmediatePropagation();
     evt.preventDefault();
 

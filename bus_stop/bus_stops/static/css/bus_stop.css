@@ -15,9 +15,15 @@ li{
   list-style: none;
 }
 
-.open-nav, .icon-bar, .sr-only{
-  width:10%;
-  height: 110%;
+#open-nav{
+  width: 9%;
+  border: 2px solid black;
+  height: 100px;
+  width: 15%;
+}
+
+.brand{
+  font-size: 40px;
 }
 
 @media (max-width: 1080px) {
