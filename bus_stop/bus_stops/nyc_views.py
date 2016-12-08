@@ -37,7 +37,10 @@ def find_stops(request):
             result = result * 1000
 
         if result <= float(request.POST['dist']):
-            local_points[stop.stop_id] = {'lat':str(stop_lat), 'lng':str(stop_lng)}
+            local_points[stop.stop_id] = {'lat':str(stop_lat),
+                                          'lng':str(stop_lng),
+                                          'type':stop.type,
+                                          'street':stop.street}
 
     local_points = json.loads(json.dumps(local_points))
 
