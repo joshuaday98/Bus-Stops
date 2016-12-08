@@ -124,7 +124,7 @@ function get_address(dist, dist_unit){
 
   $('#get').on('click touchstart', function(evt){
     var dist = $('#int-distance').val();
-    var dist_unit = $('#dist_unit').val();
+    var dist_unit = document.getElementById('dist_unit sel1').value;;
 
     if ((eval_dist.test(dist)) && (dist_unit !== 'nill')){
       get_address(dist, dist_unit);
@@ -134,10 +134,10 @@ function get_address(dist, dist_unit){
   });
   $('#given').on('click touchstart', function(evt){
     evt.stopImmediatePropagation();
-    evt.preventDefault();
+    evt.defaultPrevented();
 
     var dist = $('#int-distance').val();
-    var dist_unit = $('#dist_unit').val();
+    var dist_unit = document.getElementById('dist_unit sel1').value;;
 
     if((eval_dist.test(dist)) && (dist_unit !== 'nill')){
       geocode_address($('#address').val(), dist, dist_unit);

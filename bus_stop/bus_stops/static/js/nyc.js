@@ -33,7 +33,7 @@ function find_stops(lat, lng, dist, dist_unit){
                'dist':dist,
                'unit_for_dist':dist_unit},
           success: function(response){
-            console.log(response)
+
             add_stop_markers(lat, lng, response)
           },
           error: function(error){
@@ -51,7 +51,7 @@ function geocode_address(user_address, dist, dist_unit){
             find_stops(response.lat, response.lng, dist, dist_unit)
           },
           error: function(error){
-            console.log(error);
+
             $('#results').append('<p>An Error Occured</p>')
           }
         });
@@ -80,7 +80,6 @@ function get_address(dist, dist_unit){
   });
   $('#given').on('click touchstart', function(evt){
     evt.stopImmediatePropagation();
-    evt.preventDefault();
 
     var dist = $('#int-distance').val();
     var dist_unit = document.getElementById('dist_unit sel1').value;
