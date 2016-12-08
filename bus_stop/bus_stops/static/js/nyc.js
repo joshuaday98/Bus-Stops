@@ -7,7 +7,8 @@ function find_stops(lat, lng, dist, dist_unit){
                'lng':lng,
                'dist':dist,
                'unit_for_dist':dist_unit},
-          success: function(repsonse){
+          success: function(response){
+            console.log(response)
             add_stop_markers(lat, lng, response)
           },
           error: function(error){
@@ -58,7 +59,7 @@ function get_address(dist, dist_unit){
 
     var dist = $('#int-distance').val();
     var dist_unit = document.getElementById('dist_unit sel1').value;
-    
+
     if((eval_dist.test(dist)) && (dist_unit !== 'nill')){
       geocode_address($('#address').val(), dist, dist_unit);
     }else{

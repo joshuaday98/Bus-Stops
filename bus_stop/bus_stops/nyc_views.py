@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def find_stops(request):
-    local_points = []
+    local_points = {}
     inc_lat = float(request.POST['lat'])
     inc_lng = float(request.POST['lng'])
 
@@ -18,17 +18,16 @@ def find_stops(request):
         r = 6371 # radius of earth in km
 
     for stop in NYCStop.objects.all():
-        stop_coords = stop.coords()
-        stop_lat, stop_lng = stop_coords()[0], stop_coords()[1]
+        stop_lat, stop_lng = stop.coords()[0], stop.coords()[1]
 
         """
         HAVERSINE FORMULA
         """
-        inc_lat, inc_lng, stop_lat, stop_lng = map(radians, [inc_lat, inc_lng, stop_lat, stop_lng])
+        inc_lat_rad, inc_lng_rad, stop_lat_rad, stop_lng_rad = map(radians, [inc_lat, inc_lng, stop_lat, stop_lng])
 
-        dlon = stop_lng - inc_lng
-        dlat = stop_lat - inc_lat
-        a = sin(dlat / 2) ** 2 + cos(inc_lat) * cos(stop_lat) * sin(dlon / 2) ** 2
+        dlon = stop_lng_rad - inc_lng_rad
+        dlat = stop_lat_rad - inc_lat_rad
+        a = sin(dlat / 2) ** 2 + cos(inc_lat_rad) * cos(stop_lat_rad) * sin(dlon / 2) ** 2
         c = 2 * asin(sqrt(a))
         result = c * r
 
@@ -37,11 +36,15 @@ def find_stops(request):
         else:
             result = result * 1000
 
-        if result <= request.POST['dist']:
-            local_points.append(result)
-        """
-        TODO: turn the stop into a dictionary stop_id:(lat, lng)
-        """
+        if result <= float(request.POST['dist']):
+            local_points[stop.stop_id] = {'lat':str(stop_lat), 'lng':str(stop_lng)}
+
+    local_points = json.loads(json.dumps(local_points))
+
+    """
+    TODO: turn the stop into a dictionary stop_id:(lat, lng)
+    """
+    return JsonResponse(local_points)
 
 def post_nyc(request):
     context = {'city':'NYC'}
