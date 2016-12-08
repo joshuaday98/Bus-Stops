@@ -17,8 +17,7 @@ def find_stops(request):
         dist = float(request.POST['dist'])
 
     """
-    Finds the max coords to compare every stop from the database to.
-    if all conditions met the point will be plotted on the map!
+    TODO: HAVERSINE FORMULA
     """
 
     lat_max = round(lat + (dist/110574), 6)
