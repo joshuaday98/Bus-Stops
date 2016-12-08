@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from bus_stops import pdx_views, nyc_views
+from bus_stops import pdx_views, nyc_views, gen_views
 from django.conf import settings
 
 urlpatterns = [
@@ -24,10 +24,13 @@ urlpatterns = [
     url(r'^pdx/', pdx_views.post_pdx, name='post_pdx'),
     url(r'^nyc/', nyc_views.post_nyc, name='post_nyc'),
 
-    # Views functions
+    # PDX Views functions
     url(r'^find_stops/', pdx_views.find_stops, name='find_stops'),
     url(r'^find_route/', pdx_views.find_route, name='find_route'),
-    url(r'^geocode/', pdx_views.geocode_address, name='geocode_address'),
+    url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
+
+    # NYC Views functions
+    url(r'^nyc_find_stops/', nyc_views.find_stops, name='find_stops')
 ]
 
 if settings.DEBUG:

@@ -2,7 +2,7 @@ import csv
 from bus_stops.models import NYCStop
 import pandas as pd
 
-BASE_DIR = 'C:/PDXCODE/github_projects/bus_stop/bus_stop/utils/data/'
+BASE_DIR = '/home/zozoobaba/PDXCODE/github_projects/bus_stop/bus_stop/utils/data/'
 
 def clean_data():
     stops_sets = ['stop-subway.csv',

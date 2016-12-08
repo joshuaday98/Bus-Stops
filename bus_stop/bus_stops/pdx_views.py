@@ -4,6 +4,7 @@ import requests as req
 from django.http import JsonResponse
 import json
 from geopy.geocoders import GoogleV3
+from django.views.decorators.csrf import csrf_exempt
 
 
 def post_pdx(request):
@@ -11,6 +12,7 @@ def post_pdx(request):
     return render(request, 'main.html', context)
 
 
+@csrf_exempt
 def find_route(request):
     if request.method == 'POST':
         route_num = request.POST['route']
@@ -24,6 +26,7 @@ def find_route(request):
         return JsonResponse(response.json())
 
 
+@csrf_exempt
 def find_stops(request):
     if request.method == 'POST':
         lat = request.POST['lat']
@@ -42,14 +45,3 @@ def find_stops(request):
         response = req.get(url, data)
 
         return JsonResponse(response.json(), safe=False)
-
-
-def geocode_address(request):
-    if request.method == 'POST':
-        geolocator = GoogleV3()
-        location = geolocator.geocode(request.POST.get("address"))
-        lat = location.latitude
-        lng = location.longitude
-        coords = {"lat": lat, "lng": lng}
-
-        return JsonResponse(coords)
