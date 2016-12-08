@@ -8,30 +8,40 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def find_stops(request):
-    lat = float(request.POST['lat'])
-    lng = float(request.POST['lng'])
+    local_points = []
+    inc_lat = float(request.POST['lat'])
+    inc_lng = float(request.POST['lng'])
 
     if request.POST['unit_for_dist'] == 'ft':
-        dist = float(request.POST['dist'] * 0.3048)
+        r = 3956 # radius of earth in miles
     else:
-        dist = float(request.POST['dist'])
+        r = 6371 # radius of earth in km
 
-    """
-    TODO: HAVERSINE FORMULA
-    """
+    for stop in NYCStop.objects.all():
+        stop_coords = stop.coords()
+        stop_lat, stop_lng = stop_coords()[0], stop_coords()[1]
 
-    lat_max = round(lat + (dist/110574), 6)
-    lat_min = round(lat - (dist/110574), 6)
-    lng_max = round(lng + ((dist/110574) * cos(lat)), 6)
-    lng_min = round(lng - ((dist/110574) * cos(lat)), 6)
+        """
+        HAVERSINE FORMULA
+        """
+        inc_lat, inc_lng, stop_lat, stop_lng = map(radians, [inc_lat, inc_lng, stop_lat, stop_lng])
 
-    nycstops = NYCStop.objects.filter(lat__lte=lat_max)\
-                              .filter(lat__gte=lat_min)\
-                              .filter(lng__lte=lng_max)\
-                              .filter(lng__gte=lng_min)
+        dlon = stop_lng - inc_lng
+        dlat = stop_lat - inc_lat
+        a = sin(dlat / 2) ** 2 + cos(inc_lat) * cos(stop_lat) * sin(dlon / 2) ** 2
+        c = 2 * asin(sqrt(a))
+        result = c * r
 
-    import pdb; pdb.set_trace()
+        if request.POST['unit_for_dist'] == 'ft':
+            result = result * 5280
+        else:
+            result = result * 1000
 
+        if result <= request.POST['dist']:
+            local_points.append(result)
+        """
+        TODO: turn the stop into a dictionary stop_id:(lat, lng)
+        """
 
 def post_nyc(request):
     context = {'city':'NYC'}

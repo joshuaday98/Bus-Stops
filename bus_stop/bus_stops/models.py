@@ -17,3 +17,11 @@ class NYCStop(models.Model):
     def __str__(self):
         result = '{}, {}'.format(self.stop_id, self.street)
         return result
+
+    def __repr__(self):
+        result = '({}, {})'.format(self.stop_id, self.type)
+        return result
+
+    def coords(self):
+        result = (self.lat, self.lng)
+        return result
