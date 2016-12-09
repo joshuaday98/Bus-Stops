@@ -1,1 +1,3 @@
-{}
+{
+  "bus_stops/tests/test_gen_views.py::TestGenViews::()::test_geocode_address": true
+}

@@ -10,4 +10,5 @@ omit =
     utils/*,
     *secrets.py,
     *__init__.py,
-    *test_settings.py
+    *test_settings.py,
+    test_requirements.py

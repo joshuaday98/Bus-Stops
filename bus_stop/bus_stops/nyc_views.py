@@ -16,6 +16,7 @@ def find_stops(request):
     for stop in NYCStop.objects.all():
         result = stop.find_nearby(inc_lat,
                                   inc_lng,
+
                                   request.POST['unit_for_dist'])
 
         if result <= float(request.POST['dist']):
