@@ -26,6 +26,7 @@ function add_stop_markers(mylat, mylng, stops){
 };
 
 function find_stops(lat, lng, dist, dist_unit){
+  console.log(lat, lng)
   $.ajax({url:'/nyc_find_stops/',
           type: 'POST',
           data:{'lat':lat,
@@ -33,7 +34,6 @@ function find_stops(lat, lng, dist, dist_unit){
                'dist':dist,
                'unit_for_dist':dist_unit},
           success: function(response){
-
             add_stop_markers(lat, lng, response)
           },
           error: function(error){

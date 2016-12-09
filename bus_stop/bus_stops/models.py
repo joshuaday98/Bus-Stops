@@ -19,8 +19,12 @@ class NYCStop(models.Model):
         return result
 
     def __repr__(self):
-        result = '({}, {})'.format(self.stop_id, self.type)
-        return result
+        print(self.stop_id)
+        print(self.street)
+        print(self.lat)
+        print(self.lng)
+        print(self.type)
+        return 'There are your stats!'
 
     def coords(self):
         result = (self.lat, self.lng)
