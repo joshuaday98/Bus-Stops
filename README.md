@@ -1,3 +1,4 @@
+![travis_badge](https://travis-ci.org/joshuaday98/Bus-Stops.svg?branch=haversine 'travis_badge')
 ![logo](bus_stop/bus_stops/static/img/bus.png "Logo")
 
 # Bus Stop Locator

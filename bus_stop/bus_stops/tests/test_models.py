@@ -1,5 +1,4 @@
 import pytest
-from mixer.backend.django import mixer
 from bus_stops.models import NYCStop
 pytestmark = pytest.mark.django_db
 from fixtures.test_data import test1_busstop, test2_busstop,test_user_loc, test_address_string
