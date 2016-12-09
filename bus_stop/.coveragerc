@@ -9,4 +9,5 @@ omit =
     manage.py,
     utils/*,
     *secrets.py,
-    *__init__.py
+    *__init__.py,
+    *test_settings.py
