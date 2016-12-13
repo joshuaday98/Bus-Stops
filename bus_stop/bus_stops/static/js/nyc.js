@@ -9,16 +9,20 @@ function add_stop_markers(mylat, mylng, stops){
   });
 
   $.each(stops, function(index, value){
-    var $info_string = $('<div></div>');
+    var $info_string = '<div><p>Address:<br><b>'+ stops[index].street + '</b><br><br>TransitType:<br><b>' + stops[index].type +'</b></p></div>';
     var pos = {lat:parseFloat(stops[index].lat), lng:parseFloat(stops[index].lng)}
-    console.log(pos)
-
+    console.log($info_string)
     var marker = new google.maps.Marker({
       position: pos,
       map:map,
       animation:google.maps.Animation.DROP,
       title: stops[index].street + ' || ' + stops[index].type
     });
+
+    var infowindow = new google.maps.InfoWindow({
+      content:$info_string
+    });
+
     marker.addListener('click', function(){
       infowindow.open(map, marker);
     });
@@ -26,7 +30,6 @@ function add_stop_markers(mylat, mylng, stops){
 };
 
 function find_stops(lat, lng, dist, dist_unit){
-  console.log(lat, lng)
   $.ajax({url:'/nyc_find_stops/',
           type: 'POST',
           data:{'lat':lat,
@@ -71,7 +74,6 @@ function get_address(dist, dist_unit){
   $('#get').on('click touchstart', function(evt){
     var dist = $('#int-distance').val();
     var dist_unit = document.getElementById('dist_unit sel1').value;
-    console.log(dist_unit)
     if ((eval_dist.test(dist)) && (dist_unit !== 'nill')){
       get_address(dist, dist_unit);
     }else{

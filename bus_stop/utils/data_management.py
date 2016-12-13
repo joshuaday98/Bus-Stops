@@ -10,8 +10,8 @@ def clean_data():
                   'stops-brooklyn.csv',
                   'stops-manhattan.csv',
                   'stops-queens.csv',
-                  'stops-staten.csv']
-    frame_set = []
+                  'stops-staten.csv',]
+    frame_set = list()
 
     for stops in stops_sets:
         with open(BASE_DIR + stops) as file:

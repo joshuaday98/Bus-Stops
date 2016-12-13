@@ -1,5 +1,6 @@
 from django.db import models
 from math import *
+from geopy.geocoders import GoogleV3
 
 class NYCStop(models.Model):
     """
@@ -12,7 +13,7 @@ class NYCStop(models.Model):
     type = models.CharField(max_length=3)
 
     class Meta:
-        unique_together = ['stop_id', 'lat', 'lng']
+        unique_together = ['stop_id', 'lat', 'lng', 'type', 'street']
 
     def __str__(self):
         result = '{}, {}'.format(self.stop_id, self.street)
@@ -51,3 +52,10 @@ class NYCStop(models.Model):
             result = result * 1000
 
         return result
+
+    def human_address(self):
+        geolocator = GoogleV3()
+        location = geolocator.reverse((str(self.lat),str(self.lng)), exactly_one=True)
+        pretty_address = location.address.split(' ')[0:-2:]
+        pretty_address = ' '.join(pretty_address)
+        return pretty_address

@@ -14,4 +14,3 @@ class TestGenViews:
         assert response.status_code == 200, 'Should be accessible by anyone.'
         assert response_details.lat == '45.518858', 'Incorrect latitude.'
         assert response_details.lng == '-122.988641', 'Incorrect longitude.'
-        assert isinstance(response, django.http.response.JsonResponse) == True, 'Did not return a JsonRepsonse'
