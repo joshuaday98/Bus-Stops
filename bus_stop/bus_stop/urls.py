@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from bus_stops import pdx_views, nyc_views, gen_views
 from django.conf import settings
+from accounts import acc_views
 
 urlpatterns = [
     # urls user can actually use
@@ -33,7 +34,11 @@ urlpatterns = [
 
     # General functions
     url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
-    url(r'^$', gen_views.render_landing, name='render_landing')
+    url(r'^$', gen_views.render_landing, name='render_landing'),
+
+    # Account Functions
+    url(r'^user/login/', acc_views.login_acc, name='login_acc'),
+    url(r'^user/create/', acc_views.create_acc, name='create_acc'),
 ]
 
 if settings.DEBUG:

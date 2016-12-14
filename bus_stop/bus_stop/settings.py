@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bus_stops',
     'utils',
+    'accounts',
 ]
 
 MIDDLEWARE = [
