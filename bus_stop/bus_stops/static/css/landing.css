@@ -1,7 +1,21 @@
+body{
+  height: 100%;
+  width:99%;
+  font-family: Junge;
+
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+
 #middle{
   background-color: #e9d3be;
-  width: 50%;
-  border-radius: 5px
+  max-width: 50%;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 50%;
+  box-shadow: 0 4px 8px 0 #818181, 0 6px 8px 0 #818181;
 }
 
 .row{
@@ -9,11 +23,20 @@
 }
 
 .content{
-  padding-left: 25%;
+  padding-top: 3%;
+  font-size: 60px
 }
 
 button{
-  margin-right: auto;;
+  margin-right: auto;
   margin-left: auto;
-  display:block;
+  display:inline-block;
+  width: 30%;
+  height: 50%;
+  font-size: 30px
+}
+
+hr{
+  width: 80%;
+  border: 2px solid #ffffff
 }
