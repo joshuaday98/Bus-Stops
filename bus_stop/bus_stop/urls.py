@@ -27,10 +27,13 @@ urlpatterns = [
     # PDX Views functions
     url(r'^find_stops/', pdx_views.find_stops, name='find_stops'),
     url(r'^find_route/', pdx_views.find_route, name='find_route'),
-    url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
 
     # NYC Views functions
-    url(r'^nyc_find_stops/', nyc_views.find_stops, name='find_stops')
+    url(r'^nyc_find_stops/', nyc_views.find_stops, name='find_stops'),
+
+    # General functions
+    url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
+    url(r'^$', gen_views.render_landing, name='render_landing')
 ]
 
 if settings.DEBUG:

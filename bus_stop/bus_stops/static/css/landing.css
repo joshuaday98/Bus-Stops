@@ -1,0 +1,19 @@
+#middle{
+  background-color: #e9d3be;
+  width: 50%;
+  border-radius: 5px
+}
+
+.row{
+  height: 30%
+}
+
+.content{
+  padding-left: 25%;
+}
+
+button{
+  margin-right: auto;;
+  margin-left: auto;
+  display:block;
+}

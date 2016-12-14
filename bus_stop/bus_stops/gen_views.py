@@ -3,7 +3,7 @@ from django.http import JsonResponse
 import json
 from geopy.geocoders import GoogleV3
 from django.views.decorators.csrf import csrf_exempt
-
+from django.shortcuts import render
 
 @csrf_exempt
 def geocode_address(request):
@@ -15,3 +15,8 @@ def geocode_address(request):
         coords = {"lat": lat, "lng": lng}
 
         return JsonResponse(coords)
+
+
+def render_landing(request):
+    context = {}
+    return render(request, 'landing.html', context)
