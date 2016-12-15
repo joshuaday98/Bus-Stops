@@ -9,7 +9,7 @@ body{
   -webkit-background-size: cover;
 }
 
-#middle{
+.middle{
   background-color: #e9d3be;
   max-width: 50%;
   border-radius: 5px;
@@ -27,7 +27,7 @@ body{
   font-size: 60px
 }
 
-button{
+button, .links{
   margin-right: auto;
   margin-left: auto;
   display:inline-block;

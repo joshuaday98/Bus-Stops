@@ -12,8 +12,8 @@
   <body style='background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url({% static "img/map_wall.jpg" %}),no-repeat 50% 50% fixed;'>
     <main>
       <div class='row'>
-          <div id='middle' class='center-block'>
-            <div id='info'>
+          <div id='land' class='center-block middle'>
+            <div class='info'>
               <h1 class='content'>Transit Tracker</h1>
               <hr />
               <button id='login'>Log In</button>
@@ -24,13 +24,13 @@
               </div>
             </div>
           </div>
-          <div id='middle' class='center-block'>
-            <div id='info'>
-              <form action='create_acc' method='POST'>
+          <div id='createacc' class='center-block middle' style='display:none;'>
+            <div class='info'>
+              <form>
                 <h1 class='content'>Account Creation!</h1>
                 <hr />
-                <input type='text' name='username' placeholder='Username' maxlength='50'/><br />
                 <input type='text' name='email' placeholder='Email' maxlength='50'/><br />
+                <input type='text' name='confirm_email' placeholder='Confirm Email' maxlength='50' /><br />
                 <input type='text' name='fname' placeholder='First Name' maxlength='50'/><br />
                 <input type='text' name='lname' placeholder='Last Name' maxlength='50'/><br />
                 <input type='text' name='gender' placeholder='Gender' maxlength='50'/><br />
@@ -42,6 +42,25 @@
                 <small class='form-text text-muted'>Transit Tracker will never sell your information.</small><br />
                 <button style='margin-bottom:3%' id='create_acc'>Submit</button>
               </form>
+            </div>
+          </div>
+          <div id='loginform' class='center-block middle' style='display:none;'>
+            <div class='info'>
+              <form>
+                <h1 class='content'>Login!</h1>
+                <hr />
+                <input type='text' name='email' placeholder='Username' /><br />
+                <input type='password' name='password' placeholder='Password' /><br />
+                <button style='margin-bottom:3%' id='login'>Submit</button>
+              </form>
+            </div>
+          </div>
+          <div id='guest' class='center-block middle' style='display:none;'>
+            <div class='info'>
+              <h1 class='content'>Cities</h1>
+              <hr />
+              <a href="/pdx" class="btn btn-default links">Portland, OR</a>
+              <a href="/nyc" class="btn btn-default links">NYC, NY</a>
             </div>
           </div>
       </div>
