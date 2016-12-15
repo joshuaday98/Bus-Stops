@@ -9,7 +9,7 @@ class Member(models.Model):
     email = models.EmailField(max_length=70, null=True, blank=True, unique=True)
     first_name = models.CharField(max_length=999)
     last_name = models.CharField(max_length=999)
-    gender = models.CharField(max_length=1000)
+    gender = models.CharField(max_length=999)
     home_str = models.CharField(max_length=999)
     home_lat = models.DecimalField(max_digits=9, decimal_places=6)
     home_lng = models.DecimalField(max_digits=9, decimal_places=6)
@@ -22,3 +22,9 @@ class Member(models.Model):
 
     def save(self):
         geocode = GoogleV3()
+        location = geocoder.geocode(self.home_str)
+
+        self.home_lat = round(location.latitude, 6)
+        self.home_lng = round(location.longitude, 6)
+
+        super(Member, self).save(*args, **kwargs)

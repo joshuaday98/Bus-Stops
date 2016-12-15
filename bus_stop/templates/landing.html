@@ -17,7 +17,7 @@
               <h1 class='content'>Transit Tracker</h1>
               <hr />
               <button id='login'>Log In</button>
-              <button id='create'>Create Account</button>
+              <button id='create'>Sign Up</button>
               <hr />
               <div class='bottom_button'>
                 <button style='margin-bottom:3%' id='continue'>Continue As guest</button>
@@ -26,7 +26,22 @@
           </div>
           <div id='middle' class='center-block'>
             <div id='info'>
-              <form action='login_acc' method='POST'
+              <form action='create_acc' method='POST'>
+                <h1 class='content'>Account Creation!</h1>
+                <hr />
+                <input type='text' name='username' placeholder='Username' maxlength='50'/><br />
+                <input type='text' name='email' placeholder='Email' maxlength='50'/><br />
+                <input type='text' name='fname' placeholder='First Name' maxlength='50'/><br />
+                <input type='text' name='lname' placeholder='Last Name' maxlength='50'/><br />
+                <input type='text' name='gender' placeholder='Gender' maxlength='50'/><br />
+                <input type='text' name='street' placeholder='Street' maxlength='50'/><br />
+                <input type='text' name='state' placeholder='State' maxlength='2'/><br />
+                <input type='text' name='zip' placeholder='ZIP Code' maxlength='5'/><br />
+                <input type='password' name='password' placeholder='Password' maxlength='50'/><br />
+                <input type='password' name='confirm_pass' placeholder='Confirm Password' maxlength='50'/><br />
+                <small class='form-text text-muted'>Transit Tracker will never sell your information.</small><br />
+                <button style='margin-bottom:3%' id='create_acc'>Submit</button>
+              </form>
             </div>
           </div>
       </div>

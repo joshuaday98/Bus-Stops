@@ -37,8 +37,8 @@ urlpatterns = [
     url(r'^$', gen_views.render_landing, name='render_landing'),
 
     # Account Functions
-    url(r'^user/login/', acc_views.login_acc, name='login_acc'),
-    url(r'^user/create/', acc_views.create_acc, name='create_acc'),
+    #url(r'^user/login/', acc_views.login_acc, name='login_acc'),
+    #url(r'^user/create/', acc_views.create_acc, name='create_acc'),
 ]
 
 if settings.DEBUG:
