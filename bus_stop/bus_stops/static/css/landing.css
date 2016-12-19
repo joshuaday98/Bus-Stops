@@ -18,7 +18,7 @@ body{
   box-shadow: 0 4px 8px 0 #818181, 0 6px 81px 0 #818181;
 }
 
-.row{
+.main{
   height: 30%
 }
 
@@ -41,6 +41,6 @@ hr{
   border: 2px solid #ffffff
 }
 
-form{
+.form{
   font-size: 20px
 }

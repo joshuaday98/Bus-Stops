@@ -9,15 +9,26 @@ from django.contrib.auth.forms import UserCreationForm
 
 @csrf_exempt
 def geocode_address(request):
+    geolocator = GoogleV3()
+
     if request.method == 'POST':
-        geolocator = GoogleV3()
         location = geolocator.geocode(request.POST.get("address"))
         lat = round(location.latitude, 6)
         lng = round(location.longitude, 6)
         coords = {"lat": lat, "lng": lng}
 
         return JsonResponse(coords)
+    else:
+        location = geolocator.geocode(request.GET.get('address'))
 
+        if location != None:
+            data = {'validity':1}
+
+            return JsonResponse(data)
+        else:
+            data = {'validity':0}
+
+            return JsonResponse(data)
 
 def render_landing(request):
     context = {}

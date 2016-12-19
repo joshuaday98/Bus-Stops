@@ -4,6 +4,7 @@
   <head>
       <meta charset='utf-8' />
       <title>Transit Tracker - Landing</title>
+
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <link href='//fonts.googleapis.com/css?family=Junge' rel='stylesheet'>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
@@ -12,6 +13,9 @@
   <body style='background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ),url({% static "img/map_wall.jpg" %}),no-repeat 50% 50% fixed;'>
     <main>
       <div class='row'>
+        <span id='back' class='glyphicon glyphicon-backward'></span>
+      </div>
+      <div class='row main'>
           <div id='land' class='center-block middle'>
             <div class='info'>
               <h1 class='content'>Transit Tracker</h1>
@@ -26,7 +30,7 @@
           </div>
           <div id='createacc' class='center-block middle' style='display:none;'>
             <div class='info'>
-              <form>
+              <div class='form'>
                 <h1 class='content'>Account Creation!</h1>
                 <hr />
                 <input type='text' name='email' placeholder='Email' maxlength='50'/><br />
@@ -37,19 +41,12 @@
                 <input type='text' name='street' placeholder='Street' maxlength='50'/><br />
                 <input type='text' name='state' placeholder='State' maxlength='2'/><br />
                 <input type='text' name='zip' placeholder='ZIP Code' maxlength='5'/><br />
-                <input type='password' name='password' placeholder='Password' maxlength='50'/><br />
-                <small class='form-text text-muted'>
-                  Requirements:
-                  <li>1 Capitol Letter</li>
-                  <li>1 Number</li>
-                  <li>0 Symbols</li>
-                  <li>No shorter than 8 characters.</li>
-                  <li>No longer than 16 characters.</li>
-                </small>
+                <input type='password' name='password' placeholder='Password' maxlength='50' data-toggle='popover' data-trigger='focus' data-content='Requirements: 1 capitol letter, 1 number, 0 Symbols, no shorter than 8 characters,  and no longer than 16 characters.'/><br />
                 <input type='password' name='confirm_pass' placeholder='Confirm Password' maxlength='50'/><br />
                 <small class='form-text text-muted'>Transit Tracker will never give away your information.</small><br />
                 <button style='margin-bottom:3%' id='create_acc'>Submit</button>
-              </form>
+              </div>
+
             </div>
           </div>
           <div id='loginform' class='center-block middle' style='display:none;'>
@@ -75,6 +72,7 @@
     </main>
   </body>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src='{% static "js/landing.js" %}'></script>
 </html>
