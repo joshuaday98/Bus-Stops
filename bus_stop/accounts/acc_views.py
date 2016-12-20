@@ -1,28 +1,28 @@
 from django.shortcuts import render, redirect
-from .forms import MemberRegistrationForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from .models import Member
+from geopy.geocoders import GoogleV3
 
 
-def register(request):
-    if request.method == 'GET':
-        user_form = UserCreationForm()
-        reg_form = MemberRegistrationForm()
+def create_acc(request):
+    if request.method == 'POST':
+        username = request.POST.get('email').split('@')[0]
+        home_str = request.POST.get('street') + ' ' + request.POST.get('state') + ' ' + request.POST.get('zip')
 
-    elif request.method == 'POST':
-        querydict = request.POST
-        reg_form = UserCreationForm(data=querydict)
-        user_form = MemberRegistrationForm(data=querydict)
+        querydict = {'user':username,
+                     'password':request.POST.get('password'),
+                     'email':request.POST.get('email'),
+                     'first_name':request.POST.get('fname'),
+                     'last_name':request.POST.get('lname'),
+                     'gender':request.POST.get('gender'),
+                     'home_str':home_str}
 
-        if user_form.is_valid() and reg_form.is_valid():
-            reg = reg_form.save(commit=False)
-            user = user_form.save(commit=False)
+        user = User.objects.create(username=username, password=password)
+        member = Member.objects.create(user=user, **querydict)
 
-            reg.save()
-            user.user = user
-            user.save()
+        user.save()
+        member.save()
 
-            return redirect('/')
+    context = {}
 
-    context = {'reg_form': reg_form,
-               'user_form': user_form}
     return render(request, 'acct/acct_create.html', context)

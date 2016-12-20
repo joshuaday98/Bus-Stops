@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from geopy.geocoders import GoogleV3
 
+
 class Member(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -18,7 +19,7 @@ class Member(models.Model):
         return self.user, self.email
 
     def __repr__(self):
-        pass
+        return self.user, self.email
 
     def save(self):
         geocode = GoogleV3()

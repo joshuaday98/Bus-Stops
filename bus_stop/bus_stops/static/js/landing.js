@@ -2,11 +2,26 @@
     'use strict';
 
 
-    (function enable_pops(){
-      $(document).ready(function(){
-        $('[data-toggle=popover]').popover();
+    function create_acc($form){
+      var formdata = $($form).serializeArray()
+      var data = {};
+
+      $(formdata).each(function(index, obj){
+        data[obj.name] = obj.value;
       });
-    })();
+      console.log(data)
+      /*
+      $.ajax({url:'/accounts/create',
+              type:'POST',
+              data:data,
+              success:function(response){
+                console.log('Account successfully created')
+              },
+              error: function(error){
+                console.log(error)
+              }
+            });*/
+          };
 
 
     function change_border(html_element, change){
@@ -169,6 +184,17 @@
 
     $('input[name=state]').autocomplete({
       source:states
+    });
+    $('form').on('submit', function(evt){
+      evt.preventDefault();
+      create_acc(this)
+    });
+  })();
+
+
+  (function enable_pops(){
+    $(document).ready(function(){
+      $('[data-toggle=popover]').popover();
     });
   })();
 })();

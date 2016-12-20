@@ -32,6 +32,9 @@ urlpatterns = [
     # NYC Views functions
     url(r'^nyc_find_stops/', nyc_views.find_stops, name='find_stops'),
 
+    # Accounts functions
+    url(r'^accounts/create/', acc_views.create_acc, name='create_acc '),
+
     # General functions
     url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
     url(r'^$', gen_views.render_landing, name='render_landing'),

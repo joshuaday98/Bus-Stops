@@ -30,23 +30,22 @@
           </div>
           <div id='createacc' class='center-block middle' style='display:none;'>
             <div class='info'>
-              <div class='form'>
+              <form>
                 <h1 class='content'>Account Creation!</h1>
                 <hr />
-                <input type='text' name='email' placeholder='Email' maxlength='50'/><br />
-                <input type='text' name='confirm_email' placeholder='Confirm Email' maxlength='50' /><br />
-                <input type='text' name='fname' placeholder='First Name' maxlength='50'/><br />
-                <input type='text' name='lname' placeholder='Last Name' maxlength='50'/><br />
-                <input type='text' name='gender' placeholder='Gender' maxlength='50'/><br />
-                <input type='text' name='street' placeholder='Street' maxlength='50'/><br />
-                <input type='text' name='state' placeholder='State' maxlength='2'/><br />
-                <input type='text' name='zip' placeholder='ZIP Code' maxlength='5'/><br />
-                <input type='password' name='password' placeholder='Password' maxlength='50' data-toggle='popover' data-trigger='focus' data-content='Requirements: 1 capitol letter, 1 number, 0 Symbols, no shorter than 8 characters,  and no longer than 16 characters.'/><br />
-                <input type='password' name='confirm_pass' placeholder='Confirm Password' maxlength='50'/><br />
+                <input type='email' name='email' placeholder='Email' maxlength='50' required/><br />
+                <input type='text' name='confirm_email' placeholder='Confirm Email' maxlength='50' required/><br />
+                <input type='text' name='fname' placeholder='First Name' maxlength='50' required/><br />
+                <input type='text' name='lname' placeholder='Last Name' maxlength='50' required/><br />
+                <input type='text' name='gender' placeholder='Gender' maxlength='50' required/><br />
+                <input type='text' name='street' placeholder='Street Address, City' maxlength='50' required/><br />
+                <input type='text' name='state' placeholder='State' maxlength='2' required/><br />
+                <input type='text' name='zip' placeholder='ZIP Code' maxlength='5' required/><br />
+                <input type='password' name='password' placeholder='Password' maxlength='50' data-toggle='popover' data-trigger='focus' data-content='Requirements: 1 capitol letter, 1 number, 0 Symbols, no shorter than 8 characters,  and no longer than 16 characters.' required/><br />
+                <input type='password' name='confirm_pass' placeholder='Confirm Password' maxlength='50' required/><br />
                 <small class='form-text text-muted'>Transit Tracker will never give away your information.</small><br />
                 <button style='margin-bottom:3%' id='create_acc'>Submit</button>
-              </div>
-
+              </form>
             </div>
           </div>
           <div id='loginform' class='center-block middle' style='display:none;'>
