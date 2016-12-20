@@ -2,6 +2,28 @@
     'use strict';
 
 
+    function login_acc($form){
+      var formdata = $($form).serializeArray()
+      var data = {};
+
+      $(formdata).each(function(index, obj){
+        data[obj.name] = obj.value;
+      });
+      console.log(data)
+
+      $.ajax({url:'/accounts/login/',
+              type:'POST',
+              data:data,
+              success:function(response){
+                  console.log(response)
+              },
+              error:function(error){
+                $('#test-response').append('The username or password is incorrect.')
+              }
+            })
+          };
+
+
     function create_acc($form){
       var formdata = $($form).serializeArray()
       var data = {};
@@ -10,17 +32,17 @@
         data[obj.name] = obj.value;
       });
       console.log(data)
-      /*
-      $.ajax({url:'/accounts/create',
+
+      $.ajax({url:'/accounts/create/',
               type:'POST',
               data:data,
               success:function(response){
                 console.log('Account successfully created')
               },
               error: function(error){
-                console.log(error)
+                $('#test-response').append(error)
               }
-            });*/
+            });
           };
 
 
@@ -39,17 +61,18 @@
 
     function create_form_events(states){
     // Fields in use
-    var field_array = [$('input[name=email]'),//0
+    var field_array = [$('input[name=email]'),        //0
                        $('input[name=confirm_email]'),//1
-                       $('input[name=zip]'),//2
-                       $('input[name=password]'),//3
-                       $('input[name=confirm_pass]'),//4
-                       $('input[name=state]'),//5
-                       $('input[name=fname]'),//6
-                       $('input[name=lname]'),//7
-                       $('#create_acc'),//8
-                       $('input[name=gender]'),//9
-                       $('input[name=street]')]//10
+                       $('input[name=zip]'),          //2
+                       $('input[name=password]'),     //3
+                       $('input[name=confirm_pass]'), //4
+                       $('input[name=state]'),        //5
+                       $('input[name=fname]'),        //6
+                       $('input[name=lname]'),        //7
+                       $('#create_acc'),              //8
+                       $('input[name=gender]'),       //9
+                       $('input[name=street]'),       //10
+                       $('input[name=city]')]         //11
 
     // regex patterns for validation
     var re_email =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -147,6 +170,13 @@
         change_border(field_array[9],0);
       }
     });
+    field_array[11].on('blur', function(){              //city
+      if (re_name.test(field_array[11].val())){
+        change_border(field_array[11],1);
+      } else{
+        change_border(field_array[11],0)
+      }
+    });
   };
 
 
@@ -160,6 +190,7 @@
     $('#login').on('click touchstart', function(evt){
       $('#land').fadeOut(function(){
         $('#loginform').fadeIn();
+
       });
     });
     $('#create').on('click touchstart', function(evt){
@@ -185,10 +216,14 @@
     $('input[name=state]').autocomplete({
       source:states
     });
-    $('form').on('submit', function(evt){
+    $('#create_form').on('submit', function(evt){
       evt.preventDefault();
       create_acc(this)
     });
+    $('#login_form').on('submit', function(evt){
+      evt.preventDefault();
+      login_acc(this)
+    })
   })();
 
 

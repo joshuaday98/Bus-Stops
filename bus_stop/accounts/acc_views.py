@@ -2,16 +2,27 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Member
 from geopy.geocoders import GoogleV3
+import json
+from django.contrib.auth import authenticate, login
+
+
 
 
 def create_acc(request):
     if request.method == 'POST':
+        context = {}
         username = request.POST.get('email').split('@')[0]
-        home_str = request.POST.get('street') + ' ' + request.POST.get('state') + ' ' + request.POST.get('zip')
+        home_str = request.POST.get('street') + ', ' + request.POST.get('city') + ', ' + request.POST.get('state') + ' ' + request.POST.get('zip')
+        password = request.POST.get('password')
+        geocoder = GoogleV3()
 
-        querydict = {'user':username,
-                     'password':request.POST.get('password'),
-                     'email':request.POST.get('email'),
+        if geocoder.geocode(home_str) is None:
+            context['error'] = 'Not valid Address'
+            response = HttpResponse(json.dumps(context))
+            response.status_code = 400
+            return response
+
+        querydict = {'email':request.POST.get('email'),
                      'first_name':request.POST.get('fname'),
                      'last_name':request.POST.get('lname'),
                      'gender':request.POST.get('gender'),
@@ -23,6 +34,20 @@ def create_acc(request):
         user.save()
         member.save()
 
-    context = {}
+        context['success'] = 'Successfully Created Account!'
+        
+    response = HttpResponse(json.dumps(context))
+    response.status_code = 201
 
-    return render(request, 'acct/acct_create.html', context)
+    return response
+
+
+def login_acc(request):
+    if request.method == 'POST':
+        username = request.POST.get('email').split('@')[0]
+        password = request.POST.get('password')
+
+        user = authenticate(username = username, password=password)
+
+        if user is not None:
+            login(request, user)

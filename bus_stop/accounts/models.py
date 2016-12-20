@@ -6,7 +6,6 @@ from geopy.geocoders import GoogleV3
 class Member(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    dob = models.DateTimeField(auto_now=False)
     email = models.EmailField(max_length=70, null=True, blank=True, unique=True)
     first_name = models.CharField(max_length=999)
     last_name = models.CharField(max_length=999)
@@ -19,10 +18,10 @@ class Member(models.Model):
         return self.user, self.email
 
     def __repr__(self):
-        return self.user, self.email
+        return "{}, {}".format(self.user, self.email)
 
-    def save(self):
-        geocode = GoogleV3()
+    def save(self, force_insert=False, force_update=False, using=None, *args, **kwargs):
+        geocoder = GoogleV3()
         location = geocoder.geocode(self.home_str)
 
         self.home_lat = round(location.latitude, 6)

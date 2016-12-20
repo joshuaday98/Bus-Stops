@@ -4,8 +4,6 @@ import json
 from geopy.geocoders import GoogleV3
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-from accounts.forms import MemberRegistrationForm
-from django.contrib.auth.forms import UserCreationForm
 
 @csrf_exempt
 def geocode_address(request):

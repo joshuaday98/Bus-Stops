@@ -34,14 +34,11 @@ urlpatterns = [
 
     # Accounts functions
     url(r'^accounts/create/', acc_views.create_acc, name='create_acc '),
+    url(r'^accounts/login/', acc_views.login_acc, name='login_acc'),
 
     # General functions
     url(r'^geocode/', gen_views.geocode_address, name='geocode_address'),
     url(r'^$', gen_views.render_landing, name='render_landing'),
-
-    # Account Functions
-    #url(r'^user/login/', acc_views.login_acc, name='login_acc'),
-    #url(r'^user/create/', acc_views.create_acc, name='create_acc'),
 ]
 
 if settings.DEBUG:
