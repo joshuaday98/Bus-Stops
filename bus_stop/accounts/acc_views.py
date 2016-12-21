@@ -33,12 +33,14 @@ def create_acc(request):
         user.save()
         member.save()
 
-        context['success'] = 'Successfully Created Account!'
+        user_login = authenticate(username=username, password=password)
 
-    response = HttpResponse(json.dumps(context))
-    response.status_code = 201
+        if user is not None:
+            login(request, user)
 
-    return response
+            return render(request, 'landing.html', context)
+
+    return
 
 
 def login_acc(request):
@@ -48,11 +50,12 @@ def login_acc(request):
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
-
+        import pdb; pdb.set_trace()
         if user is not None:
             login(request, user)
             context['message'] ='Successfully logged in!'
+
             return render(request, 'landing.html', context)
+
         else:
-            context['message'] = 'The email or passwrd is not valid'
-            return render(request, 'landing.html', context)
+            return HttpResponse(message='The email or password is not valid.')
