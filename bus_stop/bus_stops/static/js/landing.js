@@ -2,28 +2,6 @@
     'use strict';
 
 
-    function login_acc($form){
-      var formdata = $($form).serializeArray()
-      var data = {};
-
-      $(formdata).each(function(index, obj){
-        data[obj.name] = obj.value;
-      });
-      console.log(data)
-
-      $.ajax({url:'/accounts/login/',
-              type:'POST',
-              data:data,
-              success:function(response){
-                  console.log(response)
-              },
-              error:function(error){
-                $('#test-response').append('The username or password is incorrect.')
-              }
-            })
-          };
-
-
     function create_acc($form){
       var formdata = $($form).serializeArray()
       var data = {};
@@ -212,7 +190,6 @@
         $('#land').fadeIn()
       });
     });
-
     $('input[name=state]').autocomplete({
       source:states
     });
@@ -220,10 +197,6 @@
       evt.preventDefault();
       create_acc(this)
     });
-    $('#login_form').on('submit', function(evt){
-      evt.preventDefault();
-      login_acc(this)
-    })
   })();
 
 

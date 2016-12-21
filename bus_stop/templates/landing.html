@@ -16,8 +16,22 @@
         <span id='back' class='glyphicon glyphicon-backward'></span>
       </div>
       <div class='row main'>
+        {% if request.user.is_authenicated %}
+          <div id='logout' class='center-block middle'>
+            <div class='info'>
+              <h1>{{ message }}</h1>
+              <h1 class='content'>Transit Tracker</h1>
+              <hr />
+              <button id='logout'></button>
+              <hr />
+              <a href="/pdx" class="btn btn-default links">Portland, OR</a>
+              <a href="/nyc" class="btn btn-default links">NYC, NY</a>
+            </div>
+          </div>
+        {% else %}
           <div id='land' class='center-block middle'>
             <div class='info'>
+              <h1>{{ message }}</h1>
               <h1 class='content'>Transit Tracker</h1>
               <hr />
               <button id='login'>Log In</button>
@@ -53,14 +67,13 @@
           </div>
           <div id='loginform' class='center-block middle' style='display:none;'>
             <div class='info'>
-              <form>
+              <form action='/accounts/login/' method='POST'>
                 {% csrf_token %}
                 <h1 class='content'>Login!</h1>
                 <hr />
                 <input type='text' name='email' placeholder='Email' /><br />
                 <input type='password' name='password' placeholder='Password' /><br />
                 <button style='margin-bottom:3%' id='login'>Submit</button>
-                <p id='test-response'></p>
               </form>
             </div>
           </div>
@@ -72,6 +85,7 @@
               <a href="/nyc" class="btn btn-default links">NYC, NY</a>
             </div>
           </div>
+          {% endif %}
       </div>
     </main>
   </body>

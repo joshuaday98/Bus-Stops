@@ -4,8 +4,7 @@ from .models import Member
 from geopy.geocoders import GoogleV3
 import json
 from django.contrib.auth import authenticate, login
-
-
+from django.contrib import messages
 
 
 def create_acc(request):
@@ -35,7 +34,7 @@ def create_acc(request):
         member.save()
 
         context['success'] = 'Successfully Created Account!'
-        
+
     response = HttpResponse(json.dumps(context))
     response.status_code = 201
 
@@ -44,10 +43,16 @@ def create_acc(request):
 
 def login_acc(request):
     if request.method == 'POST':
+        context = {}
         username = request.POST.get('email').split('@')[0]
         password = request.POST.get('password')
 
-        user = authenticate(username = username, password=password)
+        user = authenticate(username=username, password=password)
 
         if user is not None:
             login(request, user)
+            context['message'] ='Successfully logged in!'
+            return render(request, 'landing.html', context)
+        else:
+            context['message'] = 'The email or passwrd is not valid'
+            return render(request, 'landing.html', context)
