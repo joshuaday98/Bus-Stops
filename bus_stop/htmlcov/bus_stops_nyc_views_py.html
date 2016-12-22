@@ -126,8 +126,8 @@
 <p id="t21" class="stm mis">        <span class="key">if</span> <span class="nam">result</span> <span class="op">&lt;=</span> <span class="nam">float</span><span class="op">(</span><span class="nam">request</span><span class="op">.</span><span class="nam">POST</span><span class="op">[</span><span class="str">'dist'</span><span class="op">]</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t22" class="stm mis">            <span class="nam">local_points</span><span class="op">[</span><span class="nam">stop</span><span class="op">.</span><span class="nam">stop_id</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="str">'lat'</span><span class="op">:</span><span class="nam">str</span><span class="op">(</span><span class="nam">stop</span><span class="op">.</span><span class="nam">lat</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t23" class="pln">                                          <span class="str">'lng'</span><span class="op">:</span><span class="nam">str</span><span class="op">(</span><span class="nam">stop</span><span class="op">.</span><span class="nam">lng</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t24" class="pln">                                          <span class="str">'type'</span><span class="op">:</span><span class="nam">stop</span><span class="op">.</span><span class="nam">type</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t25" class="pln">                                          <span class="str">'street'</span><span class="op">:</span><span class="nam">stop</span><span class="op">.</span><span class="nam">street</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="pln">                                          <span class="str">'type'</span><span class="op">:</span><span class="nam">stop</span><span class="op">.</span><span class="nam">type</span><span class="op">.</span><span class="nam">title</span><span class="op">(</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="pln">                                          <span class="str">'street'</span><span class="op">:</span><span class="nam">stop</span><span class="op">.</span><span class="nam">human_address</span><span class="op">(</span><span class="op">)</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t27" class="stm mis">    <span class="nam">local_points</span> <span class="op">=</span> <span class="nam">json</span><span class="op">.</span><span class="nam">loads</span><span class="op">(</span><span class="nam">json</span><span class="op">.</span><span class="nam">dumps</span><span class="op">(</span><span class="nam">local_points</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln"><span class="strut">&nbsp;</span></p>
@@ -146,7 +146,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.2</a>,
-            created at 2016-12-12 19:21
+            created at 2016-12-21 18:08
         </p>
     </div>
 </div>

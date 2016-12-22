@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.models import User
 from .models import Member
 from geopy.geocoders import GoogleV3
@@ -35,7 +35,7 @@ def create_acc(request):
 
         user_login = authenticate(username=username, password=password)
 
-        if user is not None:
+        if user_login is not None:
             login(request, user)
 
             return render(request, 'landing.html', context)
@@ -50,7 +50,7 @@ def login_acc(request):
         password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
-        import pdb; pdb.set_trace()
+
         if user is not None:
             login(request, user)
             context['message'] ='Successfully logged in!'
@@ -58,4 +58,6 @@ def login_acc(request):
             return render(request, 'landing.html', context)
 
         else:
-            return HttpResponse(message='The email or password is not valid.')
+            response = HttpResponse
+            response.status_code = 401
+            return HttpResponse
